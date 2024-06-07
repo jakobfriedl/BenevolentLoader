@@ -1,4 +1,12 @@
-# BenevolentLoader
+```c
+VOID Banner() {
+    PRINTW(L"\n\
+┳┓          ┓     ┓      ┓    \n\
+┣┫┏┓┏┓┏┓┓┏┏┓┃┏┓┏┓╋┃ ┏┓┏┓┏┫┏┓┏┓\n\
+┻┛┗ ┛┗┗ ┗┛┗┛┗┗ ┛┗┗┗┛┗┛┗┻┗┻┗ ┛ \n\
+          V0.1 by @jakobfriedl\n\n"); 
+}
+```
 
 Shellcode loader built as part of a capstone exercise for the Maldev Academy syllabus. This loader uses beginner and intermediary malware development concepts like direct syscalls via Hell's Gate, payload staging, payload encryption and several anti-analysis features. 
 
