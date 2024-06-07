@@ -13,4 +13,4 @@
 - IAT Camouflage
 
 ## Screenshots
-![image](https://github.com/jakobfriedl/BenevolentLoader/assets/71284620/9f70fe24-99d7-4c2b-b339-86fa1cb2955a)
+![image](BenevolentLoader.png)
