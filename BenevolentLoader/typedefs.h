@@ -53,6 +53,8 @@ PVOID CopyMemoryEx(IN OUT PVOID Destination, IN CONST PVOID Source, IN SIZE_T Le
 VOID ZeroMemoryEx(IN OUT PVOID Destination, IN SIZE_T Size); 
 VOID PrintByteArray(IN PBYTE pBytes, IN SIZE_T sSize); 
 VOID RtlInitUnicodeString(IN OUT PUNICODE_STRING DestinationString, IN PCWSTR SourceString); 
+SIZE_T StringLengthA(_In_ LPCSTR String);
+SIZE_T StringLengthW(_In_ LPCWSTR String);
 
 // From antianalysis.c
 BOOL DebuggerDetected(IN PVX_TABLE pVxTable);

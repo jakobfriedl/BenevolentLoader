@@ -14,7 +14,7 @@
 #include "aes.h"
 
 // If the following line is set, verbose debug messages are printed to the console windows
-#define VERBOSE
+ #define VERBOSE
 
 /// Macros
 #define STATUS_SUCCESS ((NTSTATUS)0x00000000L)
@@ -82,7 +82,6 @@
 #endif
 
 #define HINT_BYTE 0xE6
-#define API_HAMMERING_TMPFILENAME L"data.tmp"
 
 // Hashing
 #define HASHA(STRING) (HashFNV_1a((PCHAR)STRING))
