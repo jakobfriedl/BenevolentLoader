@@ -6,14 +6,14 @@
 
 #include "base.h"
 
- /*
-  * Decrypt AES encrypted shellcode after brute-forcing decryption key
-  *
-  * @param pEncShellcode: Encrypted shellcode
-  * @param sSize: Size of the encrypted shellcode
-  *
-  * @returns: TRUE/FALSE if succeeded/failed
-  */
+/*
+ * Decrypt AES encrypted shellcode after brute-forcing decryption key
+ *
+ * @param pEncShellcode: Encrypted shellcode
+ * @param sSize: Size of the encrypted shellcode
+ *
+ * @returns: TRUE/FALSE if succeeded/failed
+ */
 BOOL Decrypt(IN PBYTE pEncShellcode, IN SIZE_T sSize) {
     
     PRINTA("\n[~~~] Decrypting payload...\n"); 
