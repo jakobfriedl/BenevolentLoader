@@ -39,7 +39,7 @@ Evasive shellcode loader built as part of a capstone exercise for the Maldev Aca
         0x03, 0xF6, 0x44, 0x93, 0xEC, 0x41, 0x90, 0x6C, 0x70, 0xCA, 0xFA, 0x5C, 0x50, 0x5C, 0xF4, 0xA4 };
    ```
 3. Switch to the Benevolent Loader project to replace the HINT_BYTE in `base.h` with the generated hint byte. Further replace the pProtectedKey and pIv variables in `crypt.c`.
-4. Modify the suUrl variable in `main.c` to specify the server where `enc.bin` is hosted.
+4. Modify the szUrl variable in `main.c` to specify the server where `enc.bin` is hosted.
 5. For verbose output, uncomment the `#define VERBOSE` line in `base.h`.
 6. Build the Benevolent Loader project in Release x64 mode.
 7. Execute `BenevolentLoader.exe` with the target process name as an argument.
