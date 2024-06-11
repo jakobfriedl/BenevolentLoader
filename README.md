@@ -1,4 +1,4 @@
-```c
+<!-- ```c
 VOID Banner() {
     PRINTW(L"\n\
 ┳┓          ┓     ┓      ┓    \n\
@@ -6,7 +6,8 @@ VOID Banner() {
 ┻┛┗ ┛┗┗ ┗┛┗┛┗┗ ┛┗┗┗┛┗┛┗┻┗┻┗ ┛ \n\
           V0.1 by @jakobfriedl\n\n"); 
 }
-```
+``` -->
+![banner](Images/Banner.png)
 
 Evasive shellcode loader built as part of a capstone exercise for the Maldev Academy syllabus. This loader uses beginner and intermediary malware development concepts like direct syscalls via Hell's Gate, payload staging, payload encryption and several anti-analysis features. Tested successfully against Windows Defender with Havoc.
 
@@ -49,7 +50,7 @@ Evasive shellcode loader built as part of a capstone exercise for the Maldev Aca
 
 ## Screenshots
 > Testing against Defender
-![image](BenevolentLoaderStealth.png)
+![image](Images/BenevolentLoaderStealth.png)
 
 > Verbose output 
-![image](BenevolentLoader.png)
+![image](Images/BenevolentLoader.png)
