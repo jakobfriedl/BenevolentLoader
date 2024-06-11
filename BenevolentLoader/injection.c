@@ -6,16 +6,16 @@
 
 #include "base.h"
 
- /*
-  * Get remote process handle via the process name
-  *
-  * @param pVxTable: Hell's Gate table for direct syscalls
-  * @param lpProcessName: Name of the remote process
-  * @param hProcess: Handle to the found process
-  * @param dwProcessId: Process ID of the found process
-  *
-  * @returns: TRUE/FALSE if grabbing the remote process succeeded/failed
-  */
+/*
+ * Get remote process handle via the process name
+ *
+ * @param pVxTable: Hell's Gate table for direct syscalls
+ * @param lpProcessName: Name of the remote process
+ * @param hProcess: Handle to the found process
+ * @param dwProcessId: Process ID of the found process
+ *
+ * @returns: TRUE/FALSE if grabbing the remote process succeeded/failed
+ */
 BOOL GetRemoteProcessHandle(IN PVX_TABLE pVxTable, IN LPCWSTR lpProcessName, OUT HANDLE* hProcess, OUT DWORD* dwProcessId) {
 
     PRINTW(L"\n[~~~] Searching for process %s...\n", lpProcessName); 
