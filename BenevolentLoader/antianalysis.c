@@ -6,13 +6,13 @@
 
 #include "base.h"
 
- /*
-  * Detect if program is debugged using NtQueryInformationProcess
-  *
-  * @param pVxTable: Hell's Gate table for direct syscalls
-  *
-  * @returns: TRUE if debugger is detected
-  */
+/*
+ * Detect if program is debugged using NtQueryInformationProcess
+ *
+ * @param pVxTable: Hell's Gate table for direct syscalls
+ *
+ * @returns: TRUE if debugger is detected
+ */
 BOOL DebuggerDetected(IN PVX_TABLE pVxTable) {
 
     PRINTA("\n[~~~] Checking for debugger... "); 
@@ -179,14 +179,14 @@ CLEANUP:
     return bState;
 }
 
- /*
-  * Delay execution via API Hammering using NtCreateFile, NtWriteFile and NtReadFile
-  *
-  * @param pVxTable: Hell's Gate table for direct syscalls
-  * @param dwStress: Number of iterations (1000 ~= 5s)
-  *
-  * @returns: TRUE/FALSE if succeeded/failed
-  */
+/*
+ * Delay execution via API Hammering using NtCreateFile, NtWriteFile and NtReadFile
+ *
+ * @param pVxTable: Hell's Gate table for direct syscalls
+ * @param dwStress: Number of iterations (1000 ~= 5s)
+ *
+ * @returns: TRUE/FALSE if succeeded/failed
+ */
 BOOL ApiHammering(IN PVX_TABLE pVxTable, IN DWORD dwStress) {
 
     PRINTA("\n[~~~] Delaying execution via API Hammering...\n");
