@@ -68,7 +68,7 @@ int wmain(int argc, wchar_t* argv[]) {
 
     /// IAT Camouflage
     IatCamouflage();
-    OKAY("IAT obfuscated with random Windows APIs..."); 
+    OKAY("IAT obfuscated with random Windows APIs."); 
 
     /// Delay Execution via API Hammering
     // Stress = 1000 => ~ 5 seconds delay
