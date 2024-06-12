@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.19)
+project(builder C)
+
+add_executable(builder aes.c crypt.c io.c main.c utils.c)
