@@ -14,7 +14,7 @@ Evasive shellcode loader built as part of a capstone exercise for the Maldev Aca
 > [!CAUTION]
 > The tools in this repository can inflict harm on systems when executed without caution. I do not condone the use of these programs for any malicious activities.
 
-## Features: 
+## Features
 - [Payload builder](./Builder/)
   - AES encrypted payload
   - XOR protected encryption key
@@ -28,7 +28,7 @@ Evasive shellcode loader built as part of a capstone exercise for the Maldev Aca
 
 ## Usage instructions
 1. Store payload in `payload.bin`.
-2. Use `Builder.exe` (Release x64) in the same directory to generate `enc.bin` and the C code for the decryption. The output should lookl like the following:
+2. Use `Builder.exe` (Release x64) in the same directory to generate `enc.bin` and the C code for the decryption. The output should look like the following:
    ```c
    #define HINT_BYTE 0x66
    
