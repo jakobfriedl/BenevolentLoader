@@ -5,6 +5,7 @@
  */ 
 
 #include "base.h"
+#include <time.h>
 
 /*
  * Decrypt AES encrypted shellcode after brute-forcing decryption key

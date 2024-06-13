@@ -36,7 +36,7 @@ typedef struct _VX_TABLE {
 /// Function prototypes
 // From hellsgate.asm
 extern VOID HellsGate(WORD wSystemCall);
-extern HellDescent();
+extern NTSTATUS HellDescent();
 
 // From main.c (Hell's Gate functions)
 PTEB RtlGetThreadEnvironmentBlock();
