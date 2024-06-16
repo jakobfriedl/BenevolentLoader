@@ -24,7 +24,7 @@ BOOL PaddBuffer(IN PBYTE pInputBuffer, IN SIZE_T sInputBufferSize, OUT PBYTE* pO
     SIZE_T sPaddedSize = NULL; 
 
     // calculate the nearest number that is multiple of 16 and saving it to PaddedSize
-    sPaddedSize = sInputBufferSize + 16 - (sInputBufferSize & 16); 
+    sPaddedSize = sInputBufferSize + (16 - (sInputBufferSize % 16)) % 16;
     
     // Allocate buffer of size sPaddedSize
     pPaddedBuffer = (PBYTE)HeapAlloc(GetProcessHeap(), 0, sPaddedSize); 
